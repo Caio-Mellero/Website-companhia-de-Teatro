@@ -9,7 +9,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <title>CIA Teatro Rebolado</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="shortcut icon" href="src/img/favicon_io/favicon-16x16.png" type="image/x-icon">
 </head>
 
 <body>
@@ -25,12 +26,118 @@
 
     <div id="mainSiteContent">
         <header class="title">
-            <h1> Teatro Rebolado</h1>
+            <h1>Teatro Rebolado</h1>
         </header>
+        <nav class="menu">
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="atores.html">Atores</a></li>
+                <li><a href="shows.html">Espetáculos</a></li>
+                <li><a href="contact.html">Contato</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h2>CIA Teatro Rebolado</h2>
+                <p class="hero-slogan">A magia do palco começa aqui</p>
+                <a href="shows.html" class="hero-btn">Veja o Próximo Espetáculo</a>
+            </div>
+        </section>
+
+        <!-- Destaque do Próximo Espetáculo -->
+        <section class="evento-destaque">
+            <!--Imagem de exemplo-->
+            <img src="https://png.pngtree.com/background/20231016/original/pngtree-glistening-red-and-gold-stage-set-against-a-stunning-red-theatre-picture-image_5576547.jpg" alt="Cartaz do Espetáculo" class="evento-cartaz">
+            
+            <div class="evento-info">
+                <h3>Próximo Espetáculo: <span>O Grande Rebolado</span></h3>
+                <p class="evento-data">12 a 15 de Julho, Teatro Municipal</p>
+                <p class="evento-sinopse">
+                    Uma comédia musical que celebra a cultura popular, com muita música, dança e emoção. Venha se encantar!
+                </p>
+                <div class="evento-botoes">
+                    <a href="shows.html" class="evento-btn">Mais Informações</a>
+                    <a href="https://www.sympla.com.br/" target="_blank" class="evento-btn destaque">Adquira seu Ingresso</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Breve Apresentação -->
+        <section class="apresentacao">
+            <h3>Sobre a Companhia</h3>
+            <p>
+                O Teatro Rebolado é referência em inovação e alegria nos palcos. Nossa missão é emocionar, provocar e divertir, levando o melhor da arte cênica para todos os públicos. <a href="#">Saiba mais</a>
+            </p>
+        </section>
+
+        <!-- Chamadas Visuais -->
+        <section class="chamadas-visuais">
+            <a href="atores.html" class="card-chamada">
+                <img src="src/img/elenco.jpg" alt="Elenco" />
+                <span>Conheça Nossos Artistas</span>
+            </a>
+            <a href="shows.html" class="card-chamada">
+                <img src="src/img/espetaculo.jpg" alt="Espetáculos" />
+                <span>Nossos Espetáculos</span>
+            </a>
+        </section>
+
+        <!-- Notícias Recentes -->
+        <section class="noticias">
+            <h3>Notícias Recentes</h3>
+            <ul>
+                <li><a href="#">Nova temporada confirmada para agosto!</a></li>
+                <li><a href="#">Entrevista com o diretor no Jornal da Cidade</a></li>
+            </ul>
+        </section>
+
+        <!-- Depoimentos -->
+        <section class="depoimentos">
+            <h3>O que dizem sobre nós</h3>
+            <div class="depoimentos-lista">
+                <blockquote>
+                    "Um espetáculo envolvente do início ao fim!"<br>
+                    <span>- Maria Souza</span>
+                </blockquote>
+                <blockquote>
+                    "O melhor grupo teatral da cidade, recomendo a todos."<br>
+                    <span>- João Lima</span>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- Redes Sociais e Newsletter -->
+        <section class="social-newsletter">
+            <div class="redes-sociais">
+                <a href="https://www.instagram.com/ciateatrorebolado?igsh=NmZ4c3FpdWQxb3l6" aria-label="Instagram" target="_blank"><img src="src/img/instagram.svg" alt="Instagram"></a>
+                <a href="#" aria-label="Facebook"><img src="src/img/facebook.svg" alt="Facebook"></a>
+                <a href="#" aria-label="YouTube"><img src="src/img/youtube.svg" alt="YouTube"></a>
+            </div>
+            <form class="newsletter">
+                <label for="email">Fique por dentro de nossa programação!</label>
+                <input type="email" id="email" placeholder="Seu e-mail" required>
+                <button type="submit">Assinar</button>
+            </form>
+        </section>
+
+        <footer>
+            <p class="footer-text">© 2023 Teatro Rebolado. Todos os direitos reservados.</p>
+            <p class="footer-text">Desenvolvido por <a href="index.html">inicio</a></p>
+        </footer>
+    </div>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
+
+<!--        
         <div class="container-geral">
             <section class="atores">
                 <div>
-                    <h2 class="title-ator">Gigi</h2>
+                    <h2 class="title-atores">Gigi</h2>
                     <img src="src/img/Gigi-200.jpg" alt="Imagem Nina">
                     <p class="descrição">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nostrum ipsum
                         debitis
@@ -56,23 +163,6 @@
                         numquam consectetur sint, autem similique voluptatem laborum corporis nulla? Iure eligendi illum
                         laborum, excepturi repudiandae numquam mollitia!</p>
                 </div>
-                <div>
-                    <h2 class="title-ator">Hugo</h2>
-                    <img src="src/img/Gigi-200.jpg" alt="Imagem Giovana Pietra da Mota">
-                    <p class="descrição">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet nostrum ipsum
-                        debitis
-                        nam
-                        numquam consectetur sint, autem similique voluptatem laborum corporis nulla? Iure eligendi illum
-                        laborum, excepturi repudiandae numquam mollitia!</p>
-                </div>
             </section>
         </div>
-        <footer>
-            <p class="footer-text">© 2023 Teatro Rebolado. Todos os direitos reservados.</p>
-            <p class="footer-text">Desenvolvido por <a href="index.html">inicio</a></p>
-        </footer>
-    </div>
-    <script src="js/script.js"></script>
-</body>
-
-</html>
+-->
