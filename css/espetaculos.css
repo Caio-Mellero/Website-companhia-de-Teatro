@@ -1,0 +1,78 @@
+.espetaculos-passados {
+    margin: 40px auto;
+    max-width: 1100px;
+    padding: 0 20px;
+}
+
+.espetaculos-passados h2 {
+    text-align: center;
+    margin-bottom: 32px;
+    font-size: 2rem;
+    color: #b71c1c;
+    letter-spacing: 1px;
+}
+
+.cards-espetaculos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+}
+
+.card-espetaculo {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    overflow: hidden;
+    width: 320px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-espetaculo:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 6px 24px rgba(183,28,28,0.15);
+}
+
+.card-espetaculo img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.info-espetaculo {
+    padding: 18px 16px 16px 16px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-espetaculo h3 {
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    color: #b71c1c;
+}
+
+.data-espetaculo {
+    font-size: 0.95rem;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.sinopse-espetaculo {
+    font-size: 1rem;
+    color: #333;
+    flex: 1;
+}
+
+@media (max-width: 900px) {
+    .cards-espetaculos {
+        flex-direction: column;
+        align-items: center;
+    }
+    .card-espetaculo {
+        width: 90%;
+        max-width: 400px;
+    }
+}
