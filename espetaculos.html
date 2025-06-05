@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espetáculos | Teatro Rebolado</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/espetaculos.css">
+    <link rel="stylesheet" href="css/index.css"> <!-- Seu CSS global/base -->
+    <link rel="stylesheet" href="css/espetaculos.css"> <!-- CSS específico para esta página (atualizado abaixo) -->
+    <link rel="shortcut icon" href="src/img/favicon_io/favicon-16x16.png" type="image/x-icon">
 </head>
+
 <body>
     <header class="title">
         <h1>Teatro Rebolado</h1>
@@ -14,50 +17,118 @@
     <nav class="menu">
         <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="atores.html">Atores</a></li>
+            <li><a href="atores.html">Equipe</a></li> <!-- Mantive Equipe como no seu original -->
             <li><a href="espetaculos.html" class="active">Espetáculos</a></li>
             <li><a href="contatos.html">Contato</a></li>
         </ul>
     </nav>
 
-    <main>
-        <!-- ...conteúdo específico da página de espetáculos... -->
+    <main class="container-pagina-espetaculos">
 
-        <section class="espetaculos-passados">
-            <h2>Espetáculos Passados</h2>
-            <div class="cards-espetaculos">
-                <div class="card-espetaculo">
-                    <img src="src/img/espetaculo1.jpg" alt="Espetáculo 1">
-                    <div class="info-espetaculo">
-                        <h3>O Rebolado Encantado</h3>
-                        <p class="data-espetaculo">Julho 2023</p>
-                        <p class="sinopse-espetaculo">Uma viagem musical pelo folclore brasileiro, com muita dança e alegria.</p>
+        <!-- Seção para o Espetáculo em Cartaz -->
+        <section class="espetaculo-em-cartaz">
+            <h2>Em Cartaz</h2>
+            <div class="destaque-cartaz-container">
+                <img src="https://placehold.co/600x400/B71C1C/FFFFFF?text=Peça+Atual"
+                    alt="Cartaz do Espetáculo Em Cartaz: Nome da Peça Atual" class="destaque-cartaz-img">
+                <div class="destaque-cartaz-info">
+                    <h3>Nome da Peça Atual</h3>
+                    <p class="destaque-cartaz-datas"><strong>Temporada:</strong> 15 de Junho a 30 de Julho de 2025</p>
+                    <p class="destaque-cartaz-local"><strong>Local:</strong> Teatro Principal da Cidade</p>
+                    <p class="destaque-cartaz-sinopse">
+                        Uma breve e convidativa sinopse sobre o espetáculo que está atualmente em cartaz.
+                        Desperte a curiosidade do público para esta incrível produção!
+                    </p>
+                    <div class="destaque-cartaz-botoes">
+                        <a href="https://www.sympla.com.br/" target="_blank"
+                            class="destaque-cartaz-btn destaque">Comprar Ingressos</a>
                     </div>
                 </div>
-                <div class="card-espetaculo">
-                    <img src="src/img/espetaculo2.jpg" alt="Espetáculo 2">
-                    <div class="info-espetaculo">
-                        <h3>Noite de Estrelas</h3>
-                        <p class="data-espetaculo">Dezembro 2022</p>
-                        <p class="sinopse-espetaculo">Um espetáculo emocionante celebrando grandes nomes do teatro nacional.</p>
-                    </div>
-                </div>
-                <div class="card-espetaculo">
-                    <img src="src/img/espetaculo3.jpg" alt="Espetáculo 3">
-                    <div class="info-espetaculo">
-                        <h3>Rebolando Histórias</h3>
-                        <p class="data-espetaculo">Agosto 2022</p>
-                        <p class="sinopse-espetaculo">Peças curtas e divertidas para toda a família, com muita interação.</p>
-                    </div>
-                </div>
-                <!-- Adicione mais cards conforme necessário -->
             </div>
         </section>
+
+            <main class="container-pagina-espetaculos">
+                <section class="espetaculos-passados">
+                    <h2>Espetáculos Passados</h2>
+                    <div class="cards-espetaculos">
+
+                        <div class="card-espetaculo">
+                            <img src="src/img/espetaculo1.jpg" alt="Espetáculo O Rebolado Encantado">
+                            <div class="info-espetaculo">
+                                <h3>O Rebolado Encantado</h3>
+                                <p class="data-espetaculo">Julho 2023</p>
+                                <p class="sinopse-espetaculo">Uma viagem musical pelo folclore brasileiro, com muita
+                                    dança e alegria.</p>
+                                <button class="btn-info-popup" data-titulo="O Rebolado Encantado"
+                                    data-imagem-src="src/img/espetaculo1.jpg" data-data="Julho 2023"
+                                    data-sinopse="Uma viagem musical pelo folclore brasileiro, com muita dança, alegria e personagens que celebram as raízes culturais do país. Uma experiência única para todas as idades.">
+                                    Mais Informações
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-espetaculo">
+                            <img src="src/img/espetaculo2.jpg" alt="Espetáculo Noite de Estrelas">
+                            <div class="info-espetaculo">
+                                <h3>Noite de Estrelas</h3>
+                                <p class="data-espetaculo">Dezembro 2022</p>
+                                <p class="sinopse-espetaculo">Um espetáculo emocionante celebrando grandes nomes do
+                                    teatro nacional.</p>
+                                <button class="btn-info-popup" data-titulo="Noite de Estrelas"
+                                    data-imagem-src="src/img/espetaculo2.jpg" data-data="Dezembro 2022"
+                                    data-sinopse="Uma homenagem comovente aos ícones do teatro brasileiro. Relembre cenas clássicas e momentos inesquecíveis que marcaram a história dos nossos palcos.">
+                                    Mais Informações
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="card-espetaculo">
+                            <img src="src/img/espetaculo3.jpg" alt="Espetáculo Rebolando Histórias">
+                            <div class="info-espetaculo">
+                                <h3>Rebolando Histórias</h3>
+                                <p class="data-espetaculo">Agosto 2022</p>
+                                <p class="sinopse-espetaculo">Peças curtas e divertidas para toda a família, com muita
+                                    interação.</p>
+                                <button class="btn-info-popup" data-titulo="Rebolando Histórias"
+                                    data-imagem-src="src/img/espetaculo3.jpg" data-data="Agosto 2022"
+                                    data-sinopse="Um mosaico de contos ágeis e bem-humorados. Ideal para apresentar o teatro às crianças e garantir risadas para os adultos, com muita participação do público.">
+                                    Mais Informações
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <p class="footer-text">© 2025 Teatro Rebolado. Todos os direitos reservados.</p>
+                <p class="footer-text">Desenvolvido por Caio Mellero</p>
+            </footer>
+
+            <div id="modal-espetaculo" class="modal-overlay">
+                <div class="modal-container">
+                    <button class="modal-fechar">&times;</button>
+                    <img id="modal-imagem" src="" alt="Cartaz do Espetáculo" class="modal-imagem">
+                    <div class="modal-conteudo">
+                        <h2 id="modal-titulo"></h2>
+                        <p id="modal-data"></p>
+                        <p id="modal-sinopse"></p>
+                        <a href="https://www.sympla.com.br/" target="_blank" class="modal-btn-ingressos">Ver Ingressos
+                            (se aplicável)</a>
+                    </div>
+                </div>
+            </div>
+
+
     </main>
+
     <footer>
-        <p class="footer-text">© 2023 Teatro Rebolado. Todos os direitos reservados.</p>
-        <p class="footer-text">Desenvolvido por <a href="index.html">inicio</a></p>
+        <p class="footer-text">© 2025 Teatro Rebolado. Todos os direitos reservados.</p>
+        <p class="footer-text">Desenvolvido por <a href="index.html">Caio Mellero</a></p>
+        <!-- Sugestão: manter seu nome ou da companhia -->
     </footer>
-    <script src="js/espetaculos.js"></script>
+    <script src="js/espetaculos.js"></script> <!-- Seu JS existente para espetáculos -->
 </body>
+
 </html>

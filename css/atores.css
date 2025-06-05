@@ -17,126 +17,6 @@ body {
     overflow: hidden;
     /* Importante: Esconde barras de rolagem durante a animação inicial da cortina */
 }
-
-/* --- Tela de Boas-Vindas Inicial --- */
-#welcomeScreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    /* Fundo preto para a tela inicial */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    z-index: 3000;
-    /* Mais alto, para estar na frente de tudo */
-    cursor: pointer;
-    transition: opacity 0.8s ease-out;
-    /* Para o fade out suave */
-}
-
-#welcomeScreen h1 {
-    font-size: 2.8em;
-    margin-bottom: 15px;
-    color: #f0f0f0;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-}
-
-#welcomeScreen p {
-    font-size: 1.2em;
-    color: #ccc;
-}
-
-/* --- Animação das Cortinas --- */
-.curtain-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 2000;
-    /* Abaixo da tela de boas-vindas, acima do conteúdo principal */
-    pointer-events: none;
-    /* Para não interferir com cliques após a abertura, se não for removido */
-}
-
-.left-curtain,
-.right-curtain {
-    position: absolute;
-    top: 0;
-    width: 50.5%;
-    /* Leve sobreposição para evitar frestas */
-    height: 100%;
-    background-color: #111;
-    /* Cor preta escura para as cortinas */
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    /* Sombra geral para dar volume */
-    transition: transform 2.5s cubic-bezier(0.65, 0, 0.35, 1);
-    /* Animação de abertura suave */
-}
-
-.left-curtain {
-    left: 0;
-    transform: translateX(0%);
-    /* Começa cobrindo a metade esquerda */
-    border-right: 1px solid #050505;
-    /* Linha sutil de separação */
-    box-shadow: inset -15px 0 25px -10px rgba(128, 128, 128, 0.15),
-        /* Sombra interna para efeito de tecido */
-        5px 0 20px rgba(0, 0, 0, 0.7);
-    /* Sombra externa na borda */
-}
-
-.right-curtain {
-    right: 0;
-    transform: translateX(0%);
-    /* Começa cobrindo a metade direita */
-    border-left: 1px solid #050505;
-    /* Linha sutil de separação */
-    box-shadow: inset 15px 0 25px -10px rgba(128, 128, 128, 0.15),
-        /* Sombra interna para efeito de tecido */
-        -5px 0 20px rgba(0, 0, 0, 0.7);
-    /* Sombra externa na borda */
-}
-
-/* Estado aberto das cortinas */
-.curtain-container.open .left-curtain {
-    transform: translateX(-100%);
-    /* Move para fora da tela à esquerda */
-}
-
-.curtain-container.open .right-curtain {
-    transform: translateX(100%);
-    /* Move para fora da tela à direita */
-}
-
-/* --- Conteúdo Principal do Site (Revelado) --- */
-#mainSiteContent {
-    display: flex;
-    /* Para organizar header, container-geral e footer verticalmente */
-    flex-direction: column;
-    /* Empilha os filhos */
-    flex-grow: 1;
-    /* Faz este container ocupar o espaço restante no body */
-    width: 100%;
-    z-index: 1000;
-    /* Abaixo das cortinas */
-    opacity: 0;
-    /* Começa invisível */
-    transition: opacity 1.5s ease-in-out 1s;
-    /* Fade in após as cortinas começarem a abrir (delay de 1s) */
-}
-
-/* Torna o conteúdo visível quando as cortinas estão abertas */
-/* Este seletor assume que #mainSiteContent é irmão adjacente de .curtain-container no HTML, o que é o caso no seu HTML */
-.curtain-container.open+#mainSiteContent {
-    opacity: 1;
-}
-
 header.title {
     color: #fff;
     /* Texto do header principal branco (herda do body, mas pode ser explícito) */
@@ -171,7 +51,6 @@ header.title h1 {
     flex-wrap: wrap;
     justify-content: center;
     gap: 25px;
-    /* Espaçamento entre os cards dos atores */
 }
 
 .atores div {
@@ -258,7 +137,6 @@ footer a:hover {
 
     .atores div {
         width: calc(50% - 25px);
-        /* Dois cards por linha, ajustando pelo gap */
     }
 }
 
@@ -277,14 +155,11 @@ footer a:hover {
 
     .atores {
         flex-direction: column;
-        /* Empilha os cards verticalmente */
         align-items: center;
-        /* Centraliza os cards empilhados */
     }
 
     .atores div {
         width: 90%;
-        /* Cards ocupam mais largura em telas pequenas */
         margin-bottom: 20px;
     }
 

@@ -15,58 +15,6 @@ body {
     overflow-x: hidden;
 }
 
-#welcomeScreen {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: #000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    z-index: 3000;
-    cursor: pointer;
-    transition: opacity 0.8s ease-out;
-}
-#welcomeScreen h1 {
-    font-size: 2.5em;
-    color: #fff;
-    margin-bottom: 15px;
-    text-shadow: 0 0 10px rgba(255,255,255,0.15);
-}
-#welcomeScreen p {
-    font-size: 1.1em;
-    color: #bdbdbd;
-}
-
-.curtain-container {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    z-index: 2000;
-    pointer-events: none;
-}
-.left-curtain, .right-curtain {
-    position: absolute;
-    top: 0; width: 50.5%; height: 100%;
-    background: #222;
-    box-shadow: 0 0 30px rgba(0,0,0,0.5);
-    transition: transform 2.5s cubic-bezier(0.65,0,0.35,1);
-}
-.left-curtain {
-    left: 0;
-    transform: translateX(0%);
-    border-right: 1px solid #050505;
-    box-shadow: inset -15px 0 25px -10px rgba(128,128,128,0.15), 5px 0 20px rgba(0,0,0,0.7);
-}
-.right-curtain {
-    right: 0;
-    transform: translateX(0%);
-    border-left: 1px solid #050505;
-    box-shadow: inset 15px 0 25px -10px rgba(128,128,128,0.15), -5px 0 20px rgba(0,0,0,0.7);
-}
-.curtain-container.open .left-curtain { transform: translateX(-100%); }
-.curtain-container.open .right-curtain { transform: translateX(100%); }
-
 #mainSiteContent {
     display: flex;
     flex-direction: column;
@@ -76,7 +24,6 @@ body {
     opacity: 0;
     transition: opacity 1.5s ease-in-out 1s;
 }
-.curtain-container.open + #mainSiteContent { opacity: 1; }
 
 nav.menu {
     width: 100%;
@@ -461,8 +408,6 @@ footer a:hover {
     .social-newsletter { flex-direction: column; gap: 18px; }
 }
 @media (max-width: 768px) {
-    #welcomeScreen h1 { font-size: 2.2em; }
-    #welcomeScreen p { font-size: 1em; }
     header.title h1 { font-size: 2em; }
     .atores div { width: calc(50% - 25px); }
     nav.menu ul { gap: 12px; }
@@ -476,8 +421,7 @@ footer a:hover {
     .noticias, .depoimentos { padding: 14px 6px; }
 }
 @media (max-width: 480px) {
-    #welcomeScreen h1 { font-size: 1.8em; }
-    #welcomeScreen p { font-size: 0.9em; }
+    header.title h1 { font-size: 1.8em; }
     header.title h1 { font-size: 1.8em; }
     .atores { flex-direction: column; align-items: center; }
     .atores div { width: 90%; margin-bottom: 20px; }

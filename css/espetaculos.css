@@ -1,13 +1,128 @@
+.container-pagina-espetaculos {
+    max-width: 1200px; /* Ajuste conforme preferir */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.espetaculo-em-cartaz {
+    background-color: #1f1f1f;
+    padding: 30px 20px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.25);
+}
+
+.espetaculo-em-cartaz h2 {
+    text-align: center;
+    font-size: 2.2em; /* Maior que o h2 dos passados */
+    color: #fff; /* Cor branca para o título principal */
+    margin-bottom: 25px;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #b71c1c; /* Linha de destaque */
+    display: inline-block; /* Para a borda não ocupar a largura toda */
+    padding-bottom: 8px;
+}
+/* Centralizar o h2 */
+.espetaculo-em-cartaz > h2 {
+    display: block; /* Para que o text-align center funcione no elemento pai */
+}
+
+
+.destaque-cartaz-container {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start; /* Alinha os itens no topo */
+    flex-wrap: wrap; /* Permite quebra em telas menores */
+}
+
+.destaque-cartaz-img {
+    width: 100%;
+    max-width: 450px; /* Ajuste o tamanho do poster */
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 3px solid #333;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.destaque-cartaz-info {
+    flex: 1;
+    min-width: 300px; /* Para não espremer demais em telas menores antes da quebra */
+    color: #e0e0e0;
+}
+
+.destaque-cartaz-info h3 {
+    font-size: 1.9em;
+    color: #fff; /* Destaque para o nome da peça */
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.destaque-cartaz-datas,
+.destaque-cartaz-local {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #bdbdbd;
+}
+.destaque-cartaz-datas strong,
+.destaque-cartaz-local strong {
+    color: #eaeaea;
+}
+
+.destaque-cartaz-sinopse {
+    font-size: 1em;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    color: #c7c7c7;
+}
+
+.destaque-cartaz-botoes {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Para botões não espremerem */
+}
+
+.destaque-cartaz-btn {
+    background-color: #eaeaea;
+    color: #111;
+    padding: 12px 25px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    border: 1px solid #bdbdbd;
+    transition: background-color 0.2s, color 0.2s, transform 0.2s;
+    text-align: center;
+}
+
+.destaque-cartaz-btn.destaque {
+    background-color: #b71c1c; /* Cor de destaque principal */
+    color: #fff;
+    border-color: #b71c1c;
+}
+
+.destaque-cartaz-btn:hover {
+    background-color: #fff;
+    color: #111;
+    transform: translateY(-2px);
+}
+.destaque-cartaz-btn.destaque:hover {
+    background-color: #8c1515; /* Tom mais escuro para hover do destaque */
+    color: #fff;
+}
+
+
+/* --- Espetáculos Passados (Estilos existentes com pequenos ajustes se necessário) --- */
 .espetaculos-passados {
     margin: 40px auto;
-    max-width: 1100px;
-    padding: 0 20px;
+    padding: 0 20px; /* Removido max-width daqui para usar o do container-pagina-espetaculos */
 }
 
 .espetaculos-passados h2 {
     text-align: center;
     margin-bottom: 32px;
-    font-size: 2rem;
+    font-size: 2rem; /* Mantido, ou pode diminuir um pouco em relação ao "Em Cartaz" */
     color: #b71c1c;
     letter-spacing: 1px;
 }
@@ -20,30 +135,32 @@
 }
 
 .card-espetaculo {
-    background: #fff;
+    background: #282828; /* Fundo do card um pouco mais escuro */
     border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
     overflow: hidden;
     width: 320px;
     transition: transform 0.2s, box-shadow 0.2s;
     display: flex;
     flex-direction: column;
+    border: 1px solid #383838;
 }
 
 .card-espetaculo:hover {
     transform: translateY(-6px) scale(1.03);
-    box-shadow: 0 6px 24px rgba(183,28,28,0.15);
+    box-shadow: 0 6px 24px rgba(183,28,28,0.25); /* Sombra mais pronunciada no hover */
 }
 
 .card-espetaculo img {
     width: 100%;
     height: 180px;
     object-fit: cover;
+    border-bottom: 2px solid #b71c1c; /* Pequena borda na imagem */
 }
 
 .info-espetaculo {
     padding: 18px 16px 16px 16px;
-    flex: 1;
+    flex-grow: 1; /* Para que o conteúdo ocupe o espaço e o card tenha a mesma altura se houver texto de tamanhos diferentes */
     display: flex;
     flex-direction: column;
 }
@@ -51,28 +168,205 @@
 .info-espetaculo h3 {
     margin: 0 0 8px 0;
     font-size: 1.2rem;
-    color: #b71c1c;
+    color: #e0e0e0; /* Cor um pouco mais clara para o título do card */
 }
 
 .data-espetaculo {
     font-size: 0.95rem;
-    color: #888;
+    color: #aaa; /* Cor mais suave para a data */
     margin-bottom: 10px;
 }
 
 .sinopse-espetaculo {
     font-size: 1rem;
-    color: #333;
-    flex: 1;
+    color: #c7c7c7; /* Cor do texto da sinopse */
+    flex-grow: 1; /* Para a sinopse ocupar o espaço restante */
+    line-height: 1.5;
 }
 
+/* --- Media Queries para Responsividade --- */
 @media (max-width: 900px) {
+    .destaque-cartaz-container {
+        flex-direction: column;
+        align-items: center; /* Centraliza a imagem quando empilhado */
+    }
+    .destaque-cartaz-img {
+        max-width: 90%; /* Imagem do destaque ocupa mais espaço */
+        margin-bottom: 20px;
+    }
+    .destaque-cartaz-info {
+        text-align: center; /* Centraliza texto do destaque */
+    }
+    .destaque-cartaz-botoes {
+        justify-content: center; /* Centraliza botões do destaque */
+    }
+
     .cards-espetaculos {
         flex-direction: column;
         align-items: center;
     }
     .card-espetaculo {
         width: 90%;
-        max-width: 400px;
+        max-width: 450px; /* Aumenta um pouco o max-width dos cards passados */
+    }
+}
+
+@media (max-width: 600px) {
+    .espetaculo-em-cartaz h2 {
+        font-size: 1.8em;
+    }
+    .destaque-cartaz-info h3 {
+        font-size: 1.6em;
+    }
+    .espetaculos-passados h2 {
+        font-size: 1.7rem;
+    }
+    .destaque-cartaz-btn {
+        padding: 10px 20px;
+        font-size: 0.95em;
+        width: 100%; /* Botões ocupam largura total */
+    }
+    .destaque-cartaz-btn:not(:last-child) {
+        margin-bottom: 10px; /* Espaço entre botões empilhados */
+    }
+}
+
+/*PopUp De mais informações*/
+
+.btn-info-popup {
+    background-color: #b71c1c;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: auto; /* Empurra o botão para o final do card */
+    align-self: flex-start; /* Alinha à esquerda no card */
+}
+
+.btn-info-popup:hover {
+    background-color: #8c1515;
+}
+
+/* O fundo escurecido que cobre a página */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 4000; /* Deve estar acima de todo o resto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Começa invisível */
+    visibility: hidden; /* Começa inacessível */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* A caixa de conteúdo do modal */
+.modal-container {
+    background-color: #1f1f1f;
+    color: #eaeaea;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh; /* Para não ocupar a tela inteira */
+    overflow-y: auto; /* Adiciona scroll se o conteúdo for muito grande */
+    position: relative;
+    display: flex;
+    gap: 20px;
+    transform: scale(0.9); /* Efeito de zoom ao aparecer */
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.ativo .modal-container {
+    transform: scale(1);
+}
+
+.modal-imagem {
+    width: 200px; /* Largura fixa para a imagem */
+    height: auto;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.modal-conteudo {
+    flex: 1; /* Ocupa o espaço restante */
+}
+
+.modal-titulo {
+    margin-top: 0;
+    font-size: 2em;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+#modal-data {
+    font-size: 0.9em;
+    color: #aaa;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+#modal-sinopse {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #c7c7c7;
+}
+
+.modal-btn-ingressos {
+    display: inline-block;
+    background-color: #b71c1c;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-top: 20px;
+    transition: background-color 0.2s;
+}
+
+.modal-btn-ingressos:hover {
+    background-color: #8c1515;
+}
+
+/* O botão de fechar (X) */
+.modal-fechar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+/* Responsividade para o modal */
+@media (max-width: 600px) {
+    .modal-container {
+        flex-direction: column;
+        padding: 20px;
+        max-height: 85vh;
+    }
+    .modal-imagem {
+        width: 100%;
+        max-width: 250px; /* Limita o tamanho em telas pequenas */
+        margin: 0 auto 15px auto; /* Centraliza a imagem */
+    }
+    .modal-titulo {
+        font-size: 1.5em;
     }
 }
