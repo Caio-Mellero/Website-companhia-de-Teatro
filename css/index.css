@@ -1,611 +1,1066 @@
-        /* Conteúdo do index.css melhorado - Início */
-        * {
-            font-family: 'Montserrat', sans-serif;
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+/* Conteúdo do index.css melhorado - Início */
+* {
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            background: #111;
-            color: #eaeaea;
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow-x: hidden; /* Garanta que o JS remova isso após as cortinas, se aplicável nesta página */
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
+body {
+    background: #111;
+    color: #eaeaea;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    /* Garanta que o JS remova isso após as cortinas, se aplicável nesta página */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 
-        /* Estilos para o conteúdo principal se as cortinas forem usadas em outras páginas */
-        /* Seletor original da cortina, pode não ser usado em espetaculos.html diretamente */
-        #mainSiteContent {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            width: 100%;
-            z-index: 1000; /* Abaixo das cortinas, se houver */
-            opacity: 1; /* Assumindo que não há animação de cortina nesta página específica ou JS cuida disso */
-            /* transition: opacity 1.5s ease-in-out 1s; */ /* Remover se não houver cortina */
-        }
-        /* .curtain-container.open + #mainSiteContent { opacity: 1; } */
+/* Estilos para o conteúdo principal se as cortinas forem usadas em outras páginas */
+/* Seletor original da cortina, pode não ser usado em espetaculos.html diretamente */
+#mainSiteContent {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+    z-index: 1000;
+    /* Abaixo das cortinas, se houver */
+    opacity: 1;
+    /* Assumindo que não há animação de cortina nesta página específica ou JS cuida disso */
+    /* transition: opacity 1.5s ease-in-out 1s; */
+    /* Remover se não houver cortina */
+}
 
-
-        nav.menu {
-            width: 100%;
-            background: #181818;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.15); /* Sombra um pouco mais suave */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1500;
-            padding: 5px 0; /* Pequeno padding vertical */
-        }
-
-        nav.menu ul {
-            list-style: none;
-            display: flex;
-            gap: 25px; /* Espaçamento ligeiramente ajustado */
-            margin: 0;
-            padding: 0;
-        }
-
-        nav.menu ul li {
-            display: inline-block;
-        }
-
-        nav.menu ul li a {
-            display: block;
-            padding: 16px 22px; /* Padding ajustado */
-            color: #ccc; /* Cor inicial um pouco mais suave */
-            font-size: 1.1em;
-            font-weight: 500;
-            text-decoration: none;
-            letter-spacing: 0.5px; /* Espaçamento entre letras sutil */
-            border-radius: 4px;
-            transition: background 0.25s ease, color 0.25s ease, border-bottom 0.25s ease;
-            background: transparent;
-            position: relative; /* Para o pseudo-elemento do active */
-        }
-
-        nav.menu ul li a:hover {
-            background: #333;
-            color: #fff;
-        }
-
-        nav.menu ul li a.active {
-            background: #2a2a2a; /* Fundo um pouco diferente para ativo */
-            color: #fff;
-            font-weight: 600; /* Mais peso para o ativo */
-        }
-        nav.menu ul li a.active::after { /* Linha inferior para estado ativo */
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 15%;
-            width: 70%;
-            height: 3px;
-            background-color: #b71c1c; /* Cor de destaque */
-            border-radius: 2px;
-        }
+/* .curtain-container.open + #mainSiteContent { opacity: 1; } */
 
 
-        header.title { /* Este é o header principal do site, geralmente na index.html */
-            color: #fff;
-            text-align: center;
-            padding: 25px 20px; /* Padding ajustado */
-            background: #1c1c1c; /* Tom ligeiramente diferente do menu */
-        }
-        header.title h1 {
-            font-size: 2.3em; /* Tamanho ajustado */
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
+nav.menu {
+    width: 100%;
+    background: #181818;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    /* Sombra um pouco mais suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1500;
+    padding: 5px 0;
+    /* Pequeno padding vertical */
+}
 
-        .hero { /* Estilos para a seção Hero da index.html */
-            position: relative;
-            width: 100%;
-            min-height: 350px; /* Altura um pouco maior */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            margin-bottom: 40px; /* Mais espaço abaixo */
-        }
-        .hero-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('src/img/hero.jpg') center/cover no-repeat; /* Mantenha sua imagem */
-            filter: brightness(0.45) grayscale(0.1) blur(1.5px); /* Filtro ajustado */
-            z-index: 1;
-            /* Considerar adicionar :before para um gradiente overlay se a imagem variar muito */
-        }
-        .hero-bg::before { /* Overlay para garantir contraste */
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1));
-            z-index: 2;
-        }
+nav.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    /* Espaçamento ligeiramente ajustado */
+    margin: 0;
+    padding: 0;
+}
 
-        .hero-content {
-            position: relative;
-            z-index: 3; /* Acima do overlay */
-            color: #fff;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        .hero-content h2 {
-            font-size: 3em; /* Maior e mais impactante */
-            margin-bottom: 15px;
-            letter-spacing: 1.5px;
-            text-shadow: 2px 2px 6px rgba(0,0,0,0.6); /* Sombra de texto mais definida */
-        }
-        .hero-slogan {
-            font-size: 1.4em; /* Maior */
-            margin-bottom: 25px;
-            color: #d1d1d1; /* Cor ajustada */
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
-        }
-        .hero-btn {
-            display: inline-block;
-            background: #b71c1c; /* Cor de destaque */
-            color: #fff;
-            font-weight: bold;
-            padding: 15px 35px; /* Mais padding */
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 1.15em; /* Tamanho ajustado */
-            transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
-            border: none; /* Remover borda padrão, já que o fundo é sólido */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-        .hero-btn:hover {
-            background: #9e1616; /* Tom mais escuro de vermelho */
-            color: #fff;
-            transform: scale(1.05); /* Efeito de crescimento sutil */
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        }
+nav.menu ul li {
+    display: inline-block;
+}
 
-        .evento-destaque { /* Seção de destaque de evento na index.html */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 35px; /* Espaçamento aumentado */
-            background: #1c1c1c; /* Fundo consistente com o header */
-            border-radius: 12px; /* Bordas mais suaves */
-            padding: 35px 25px; /* Padding aumentado */
-            margin: 0 auto 40px auto;
-            max-width: 950px; /* Largura aumentada */
-            box-shadow: 0 5px 25px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
-            flex-wrap: wrap;
-        }
-        .evento-cartaz {
-            width: 200px; /* Imagem um pouco maior */
-            height: auto; /* Para manter proporção */
-            border-radius: 8px; /* Consistente com outros elementos */
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-        }
-        .evento-info {
-            flex: 1;
-            min-width: 250px; /* Ajuste para flex-wrap */
-        }
-        .evento-info h3 {
-            font-size: 1.7em; /* Maior */
-            color: #fff; /* Mais destaque */
-            margin-bottom: 10px;
-        }
-        .evento-info span { /* Para o nome da peça dentro do h3 */
-            color: #b71c1c; /* Destaque com a cor principal */
-            font-weight: bold;
-        }
-        .evento-data {
-            font-size: 1.1em;
-            color: #b0b0b0;
-            margin-bottom: 12px;
-        }
-        .evento-sinopse {
-            color: #d1d1d1;
-            margin-bottom: 20px;
-            font-size: 1.05em;
-        }
-        .evento-botoes {
-            display: flex;
-            gap: 18px;
-            flex-wrap: wrap; /* Para responsividade dos botões */
-        }
-        .evento-btn {
-            background: #eaeaea;
-            color: #111;
-            padding: 12px 25px; /* Padding aumentado */
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            border: 1px solid #bdbdbd;
-            transition: background 0.2s, color 0.2s, transform 0.2s;
-        }
-        .evento-btn.destaque {
-            background: #b71c1c; /* Cor de destaque */
-            color: #fff;
-            border-color: #b71c1c;
-        }
-        .evento-btn:hover {
-            background: #ccc;
-            color: #111;
-            transform: translateY(-2px); /* Leve elevação */
-        }
-        .evento-btn.destaque:hover {
-            background: #9e1616;
-            color: #fff;
-        }
+nav.menu ul li a {
+    display: block;
+    padding: 16px 22px;
+    /* Padding ajustado */
+    color: #ccc;
+    /* Cor inicial um pouco mais suave */
+    font-size: 1.1em;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    /* Espaçamento entre letras sutil */
+    border-radius: 4px;
+    transition: background 0.25s ease, color 0.25s ease, border-bottom 0.25s ease;
+    background: transparent;
+    position: relative;
+    /* Para o pseudo-elemento do active */
+}
 
-        .apresentacao { /* Seção de breve apresentação na index.html */
-            max-width: 750px; /* Largura aumentada */
-            margin: 50px auto 40px auto; /* Mais margem superior */
-            text-align: center;
-            padding: 0 20px;
-        }
-        .apresentacao h3 {
-            color: #fff;
-            font-size: 1.6em; /* Maior */
-            margin-bottom: 15px;
-        }
-        .apresentacao p {
-            color: #c7c7c7;
-            font-size: 1.15em; /* Maior */
-            line-height: 1.7;
-        }
-        .apresentacao a {
-            color: #b71c1c; /* Cor de destaque para o link */
-            text-decoration: underline;
-            font-weight: 600;
-            transition: color 0.2s;
-        }
-        .apresentacao a:hover {
-            color: #fff; /* Branco no hover */
-        }
+nav.menu ul li a:hover {
+    background: #333;
+    color: #fff;
+}
 
-        .chamadas-visuais { /* Cards de chamada na index.html */
-            display: flex;
-            justify-content: center;
-            gap: 35px; /* Espaçamento aumentado */
-            margin: 40px 0;
-            flex-wrap: wrap;
-            padding: 0 20px;
-        }
-        .card-chamada {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background: #232323;
-            border-radius: 10px; /* Um pouco menos arredondado */
-            box-shadow: 0 3px 10px rgba(0,0,0,0.15);
-            text-decoration: none;
-            color: #eaeaea;
-            width: 240px; /* Largura aumentada */
-            padding: 20px 15px; /* Padding ajustado */
-            transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-            border: 1px solid #383838; /* Borda sutil */
-        }
-        .card-chamada img {
-            width: 100%;
-            max-width: 180px; /* Imagem maior */
-            height: 120px; /* Altura definida para consistência */
-            object-fit: cover; /* Garante que a imagem cubra */
-            border-radius: 6px;
-            margin-bottom: 15px;
-            filter: grayscale(0.1);
-            transition: filter 0.25s ease;
-        }
-        .card-chamada span {
-            font-size: 1.15em; /* Maior */
-            font-weight: 600;
-            text-align: center;
-        }
-        .card-chamada:hover {
-            background: #b71c1c; /* Fundo com cor de destaque */
-            color: #fff;
-            transform: translateY(-5px) scale(1.04); /* Efeito de hover mais pronunciado */
-            box-shadow: 0 6px 20px rgba(183, 28, 28, 0.3);
-        }
-        .card-chamada:hover img {
-            filter: grayscale(0);
-        }
+nav.menu ul li a.active {
+    background: #2a2a2a;
+    /* Fundo um pouco diferente para ativo */
+    color: #fff;
+    font-weight: 600;
+    /* Mais peso para o ativo */
+}
 
-        .noticias, .depoimentos { /* Seções de notícias e depoimentos na index.html */
-            max-width: 750px;
-            margin: 0 auto 40px auto;
-            background: #1c1c1c;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            padding: 30px 25px; /* Mais padding */
-        }
-        .noticias h3, .depoimentos h3 {
-            color: #fff;
-            font-size: 1.5em; /* Maior */
-            margin-bottom: 20px; /* Mais espaço */
-            text-align: center;
-        }
-        .noticias ul {
-            list-style: none; /* Remove bullets padrão */
-            padding-left: 0;
-        }
-        .noticias li {
-            margin-bottom: 12px; /* Mais espaço */
-            padding-left: 25px; /* Espaço para o ícone */
-            position: relative; /* Para o pseudo-elemento */
-        }
-        .noticias li::before { /* Ícone personalizado para notícias */
-            content: '🎭'; /* Exemplo de ícone de teatro */
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: #b71c1c; /* Cor de destaque */
-            font-size: 1.1em;
-        }
-        .noticias a {
-            color: #b0b0b0;
-            text-decoration: none; /* Remover sublinhado padrão */
-            border-bottom: 1px dotted #777; /* Sublinhado pontilhado sutil */
-            transition: color 0.2s, border-bottom-color 0.2s;
-        }
-        .noticias a:hover {
-            color: #fff;
-            border-bottom-color: #fff;
-        }
+nav.menu ul li a.active::after {
+    /* Linha inferior para estado ativo */
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    width: 70%;
+    height: 3px;
+    background-color: #b71c1c;
+    /* Cor de destaque */
+    border-radius: 2px;
+}
 
-        .depoimentos-lista {
-            display: flex;
-            flex-direction: column; /* Empilhar depoimentos */
-            gap: 25px; /* Espaçamento aumentado */
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .depoimentos-lista blockquote {
-            background: #252525; /* Fundo um pouco mais escuro */
-            color: #d1d1d1;
-            border-left: 4px solid #b71c1c; /* Borda de destaque */
-            border-radius: 6px;
-            padding: 20px 25px; /* Padding ajustado */
-            font-style: italic;
-            max-width: 100%; /* Ocupar largura disponível */
-            margin: 0;
-            position: relative; /* Para o ícone de aspas */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-         .depoimentos-lista blockquote::before { /* Ícone de aspas */
-            content: '“';
-            font-family: Georgia, serif; /* Fonte serifada para aspas */
-            font-size: 3.5em;
-            color: #b71c1c;
-            opacity: 0.3;
-            position: absolute;
-            left: 10px;
-            top: -10px;
-        }
-        .depoimentos-lista span { /* Autor do depoimento */
-            display: block;
-            margin-top: 15px;
-            color: #b71c1c; /* Cor de destaque */
-            font-size: 1em;
-            font-style: normal;
-            font-weight: 600;
-            text-align: right;
-        }
 
-        .social-newsletter { /* Seção de redes sociais e newsletter na index.html */
-            display: flex;
-            justify-content: space-around; /* Melhor distribuição */
-            align-items: center;
-            gap: 30px;
-            max-width: 800px; /* Largura aumentada */
-            margin: 0 auto 50px auto; /* Mais margem inferior */
-            flex-wrap: wrap;
-            padding: 20px;
-            background-color: #1c1c1c;
-            border-radius: 10px;
-        }
-        .redes-sociais {
-            display: flex;
-            gap: 20px; /* Espaçamento aumentado */
-        }
-        .redes-sociais a img {
-            width: 36px; /* Ícones maiores */
-            height: 36px;
-            filter: grayscale(0.8) brightness(1); /* Filtro sutil */
-            transition: filter 0.25s ease, transform 0.25s ease;
-        }
-        .redes-sociais a:hover img {
-            filter: grayscale(0) brightness(1.1);
-            transform: scale(1.15); /* Efeito de hover */
-        }
-        .newsletter {
-            display: flex;
-            align-items: center;
-            gap: 12px; /* Espaçamento ajustado */
-            flex-wrap: wrap; /* Para responsividade */
-            justify-content: center;
-        }
-        .newsletter label {
-            color: #eaeaea;
-            font-size: 1.05em;
-            margin-right: 5px;
-        }
-        .newsletter input[type="email"] {
-            padding: 10px 15px; /* Padding aumentado */
-            border-radius: 25px;
-            border: 1px solid #444; /* Borda mais escura */
-            outline: none;
-            font-size: 1em;
-            background: #2a2a2a;
-            color: #fff;
-            transition: border-color 0.2s, box-shadow 0.2s;
-            min-width: 220px; /* Largura mínima */
-        }
-        .newsletter input[type="email"]:focus {
-            border-color: #b71c1c;
-            box-shadow: 0 0 8px rgba(183, 28, 28, 0.4);
-        }
-        .newsletter button {
-            background: #b71c1c; /* Cor de destaque */
-            color: #fff;
-            border: none;
-            border-radius: 25px;
-            padding: 10px 22px; /* Padding aumentado */
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .newsletter button:hover {
-            background: #9e1616; /* Tom mais escuro */
-            transform: scale(1.05);
-        }
+header.title {
+    /* Este é o header principal do site, geralmente na index.html */
+    color: #fff;
+    text-align: center;
+    padding: 25px 20px;
+    /* Padding ajustado */
+    background: #1c1c1c;
+    /* Tom ligeiramente diferente do menu */
+}
 
-        footer {
-            background: #181818;
-            color: #a0a0a0; /* Cor mais suave */
-            text-align: center;
-            padding: 25px 0; /* Mais padding */
-            width: 100%;
-            font-size: 0.95em;
-        }
-        footer a {
-            color: #b71c1c; /* Cor de destaque */
-            text-decoration: none;
-            font-weight: 500;
-        }
-        footer a:hover {
-            text-decoration: underline;
-            color: #fff;
-        }
+header.title h1 {
+    font-size: 2.3em;
+    /* Tamanho ajustado */
+    font-weight: 700;
+    letter-spacing: 1px;
+}
 
-        /* Estilos para Atores (se esta classe for usada em index.html ou outras páginas gerais) */
-        .atores { /* Geralmente em atores.html, mas pode ser um componente */
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px; /* Espaçamento aumentado */
-            padding: 20px 0; /* Padding vertical */
-        }
-        .atores div.card-ator-geral { /* Usar uma classe mais específica se necessário */
-            background: #fff;
-            border: 1px solid #333; /* Borda mais escura */
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra mais pronunciada */
-            width: 300px;
-            padding: 25px;
-            text-align: center;
-            color: #111;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .atores div.card-ator-geral:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-        }
-        .title-ator { /* Título dentro do card de ator */
-            font-size: 1.7em; /* Maior */
-            color: #111;
-            margin-top: 0;
-            margin-bottom: 18px; /* Mais espaço */
-            font-weight: 600;
-        }
-        .atores img { /* Imagem do ator */
-            width: 160px; /* Maior */
-            height: 160px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 18px;
-            border: 5px solid #b71c1c; /* Borda com cor de destaque */
-            filter: grayscale(0.1);
-            transition: filter 0.2s ease;
-        }
-        .atores div.card-ator-geral:hover img {
-            filter: grayscale(0);
-        }
-        .descrição { /* Descrição do ator */
-            font-size: 0.95em; /* Ligeiramente maior */
-            color: #333;
-            text-align: justify;
-            line-height: 1.6;
-            margin-bottom: 0;
-        }
+/* Estilos para o novo Cartaz Principal - COM MARGENS */
+.cartaz-principal {
+    position: relative;
+    /* REMOVIDO: width: 100%; para permitir que a margem funcione */
+    height: 90vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    color: #fff;
+    padding: 0 8%;
+    overflow: hidden;
 
-        /* --- Media Queries para Responsividade --- */
-        @media (max-width: 900px) {
-            .evento-destaque { flex-direction: column; gap: 20px; text-align: center; }
-            .chamadas-visuais { gap: 20px; }
-            .social-newsletter { flex-direction: column; gap: 25px; }
-            .newsletter { flex-direction: column; width: 100%;}
-            .newsletter input[type="email"]{ width: 80%; }
-        }
-        @media (max-width: 768px) {
-            nav.menu ul { gap: 10px; } /* Menos gap no menu */
-            nav.menu ul li a { padding: 14px 12px; font-size: 1em; }
-            header.title h1 { font-size: 2em; }
-            .hero-content h2 { font-size: 2.5em; }
-            .hero-slogan { font-size: 1.2em; }
-            .atores div.card-ator-geral { width: calc(50% - 30px); } /* Ajuste para gap */
-        }
-        @media (max-width: 600px) {
-            .hero-content h2 { font-size: 2.2em; }
-            .hero-slogan { font-size: 1.1em; }
-            .evento-info h3 { font-size: 1.4em; }
-            .apresentacao h3, .noticias h3, .depoimentos h3 { font-size: 1.3em; }
-            .card-chamada { width: 80%; max-width: 300px; }
-            .noticias, .depoimentos { padding: 20px 15px; }
-            .depoimentos-lista blockquote::before { font-size: 3em; top: -5px; left: 5px;}
-        }
-        @media (max-width: 480px) {
-            body { line-height: 1.5; }
-            nav.menu { flex-direction: column; padding: 10px 0 0 0;}
-            nav.menu ul { flex-direction: column; gap: 0; width: 100%; }
-            nav.menu ul li a { padding: 15px 0; width: 100%; text-align: center; border-radius: 0; }
-            nav.menu ul li a.active::after { display: none; } /* Remover ::after no mobile colapsado */
+    /* ADICIONADO: Margem de 20px em todos os lados (cima, baixo, esquerda, direita) */
+    margin: 20px; 
 
-            header.title h1 { font-size: 1.8em; }
-            .hero-content h2 { font-size: 1.8em; }
-            .hero-slogan { font-size: 1em; }
-            .hero-btn { padding: 12px 25px; font-size: 1em; }
+    /* ADICIONADO (Opcional, mas recomendado): Cantos arredondados para um visual melhor */
+    border-radius: 15px;
+}
 
-            .evento-destaque { padding: 20px 10px; }
-            .evento-cartaz { width: 150px; }
-            .evento-info h3 { font-size: 1.2em; }
+/* Camada de fundo com a imagem do cartaz e overlay escuro */
+.cartaz-principal::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* CORRIGIDO: O fundo deve cobrir 100% do container */
+    width: 100%;
+    height: 100%;
+    background: url('https://png.pngtree.com/background/20231016/original/pngtree-glistening-red-and-gold-stage-set-against-a-stunning-red-theatre-picture-image_5576547.jpg') center center / cover no-repeat;
+    z-index: 1;
+    filter: brightness(0.6);
 
-            .atores { flex-direction: column; align-items: center; }
-            .atores div.card-ator-geral { width: 90%; margin-bottom: 25px; }
-            .atores div.card-ator-geral:last-child { margin-bottom: 0; }
+    /* ADICIONADO: Herda os cantos arredondados do pai para a imagem não "vazar" */
+    border-radius: inherit;
+}
 
-            .chamadas-visuais { gap: 15px; }
-            .card-chamada { width: 90%; }
-            .noticias li::before { font-size: 1em; }
+/* Camada de gradiente para um efeito mais profissional */
+.cartaz-principal::after {
+    content: '';
+    position: absolute;
+    top: 0; /* Adicionado para posicionamento completo */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.6) 30%, rgba(0, 0, 0, 0) 100%);
+    z-index: 2;
 
-            .social-newsletter { padding: 15px; }
-            .newsletter input[type="email"] { width: 100%; }
-            .newsletter button { width: 100%; margin-top: 10px;}
-        }
-        @media (max-width: 400px) {
-            .hero-content { padding: 20px 10px; }
-            .hero-content h2 { font-size: 1.6em; }
-            .hero-slogan { font-size: 0.9em; }
-            .hero-btn { padding: 10px 20px; font-size: 0.9em; }
+    /* ADICIONADO: Herda os cantos arredondados também */
+    border-radius: inherit;
+}
 
-            .evento-destaque { padding: 15px 5px; gap: 10px; }
-            .evento-cartaz { width: 120px; }
-            .evento-info h3 { font-size: 1.1em; }
+/* O restante do seu código (.cartaz-conteudo, etc.) continua igual */
+.cartaz-conteudo {
+    margin-left: 20px;
+    position: relative;
+    z-index: 3;
+    max-width: 650px;
+}
 
-            .apresentacao { margin: 25px auto; padding: 0 10px; }
-            .apresentacao h3, .noticias h3, .depoimentos h3 { font-size: 1.2em; }
+.cartaz-subtitulo {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #b71c1c;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
 
-            .card-chamada { padding: 15px 5px; }
-            .noticias, .depoimentos { padding: 15px 10px; }
-            .depoimentos-lista { gap: 15px; }
-            .depoimentos-lista blockquote { padding: 15px 20px; font-size: 0.9em; }
-            .depoimentos-lista span { font-size: 0.95em;}
+.cartaz-titulo {
+    font-size: 4rem;
+    font-weight: 800;
+    margin: 10px 0;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+}
 
-            .redes-sociais a img { width: 30px; height: 30px; }
-            .newsletter label { font-size: 0.9em; text-align: center; width: 100%; margin-bottom: 5px;}
-            .newsletter input[type="email"] { padding: 8px 10px; font-size: 0.9em; }
-            .newsletter button { padding: 8px 15px; font-size: 0.9em; }
-        }
+.cartaz-data {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 20px;
+    color: #d1d1d1;
+}
+
+.cartaz-sinopse {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    max-width: 90%;
+}
+
+.cartaz-botoes {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cartaz-btn {
+    padding: 14px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 2px solid #fff;
+    background-color: transparent;
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+.cartaz-btn.destaque {
+    background-color: #b71c1c;
+    border-color: #b71c1c;
+}
+
+.cartaz-btn:hover {
+    background-color: #fff;
+    color: #111;
+    transform: scale(1.05);
+}
+
+.cartaz-btn.destaque:hover {
+    background-color: #9e1616;
+    border-color: #9e1616;
+    color: #fff;
+}
+
+.evento-destaque {
+    /* Seção de destaque de evento na index.html */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    /* Espaçamento aumentado */
+    background: #1c1c1c;
+    /* Fundo consistente com o header */
+    border-radius: 12px;
+    /* Bordas mais suaves */
+    padding: 35px 25px;
+    /* Padding aumentado */
+    margin: 0 auto 40px auto;
+    max-width: 950px;
+    /* Largura aumentada */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    /* Sombra mais pronunciada */
+    flex-wrap: wrap;
+}
+
+.evento-cartaz {
+    width: 200px;
+    /* Imagem um pouco maior */
+    height: auto;
+    /* Para manter proporção */
+    border-radius: 8px;
+    /* Consistente com outros elementos */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.evento-info {
+    flex: 1;
+    min-width: 250px;
+    /* Ajuste para flex-wrap */
+}
+
+.evento-info h3 {
+    font-size: 1.7em;
+    /* Maior */
+    color: #fff;
+    /* Mais destaque */
+    margin-bottom: 10px;
+}
+
+.evento-info span {
+    /* Para o nome da peça dentro do h3 */
+    color: #b71c1c;
+    /* Destaque com a cor principal */
+    font-weight: bold;
+}
+
+.evento-data {
+    font-size: 1.1em;
+    color: #b0b0b0;
+    margin-bottom: 12px;
+}
+
+.evento-sinopse {
+    color: #d1d1d1;
+    margin-bottom: 20px;
+    font-size: 1.05em;
+}
+
+.evento-botoes {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    /* Para responsividade dos botões */
+}
+
+.evento-btn {
+    background: #eaeaea;
+    color: #111;
+    padding: 12px 25px;
+    /* Padding aumentado */
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid #bdbdbd;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.evento-btn.destaque {
+    background: #b71c1c;
+    /* Cor de destaque */
+    color: #fff;
+    border-color: #b71c1c;
+}
+
+.evento-btn:hover {
+    background: #ccc;
+    color: #111;
+    transform: translateY(-2px);
+    /* Leve elevação */
+}
+
+.evento-btn.destaque:hover {
+    background: #9e1616;
+    color: #fff;
+}
+
+.apresentacao {
+    /* Seção de breve apresentação na index.html */
+    max-width: 750px;
+    /* Largura aumentada */
+    margin: 50px auto 40px auto;
+    /* Mais margem superior */
+    text-align: center;
+    padding: 0 20px;
+}
+
+.apresentacao h3 {
+    color: #fff;
+    font-size: 1.6em;
+    /* Maior */
+    margin-bottom: 15px;
+}
+
+.apresentacao p {
+    color: #c7c7c7;
+    font-size: 1.15em;
+    /* Maior */
+    line-height: 1.7;
+}
+
+.apresentacao a {
+    color: #b71c1c;
+    /* Cor de destaque para o link */
+    text-decoration: underline;
+    font-weight: 600;
+    transition: color 0.2s;
+}
+
+.apresentacao a:hover {
+    color: #fff;
+    /* Branco no hover */
+}
+
+.chamadas-visuais {
+    /* Cards de chamada na index.html */
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    /* Espaçamento aumentado */
+    margin: 40px 0;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.card-chamada {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #232323;
+    border-radius: 10px;
+    /* Um pouco menos arredondado */
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    text-decoration: none;
+    color: #eaeaea;
+    width: 240px;
+    /* Largura aumentada */
+    padding: 20px 15px;
+    /* Padding ajustado */
+    transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    border: 1px solid #383838;
+    /* Borda sutil */
+}
+
+.card-chamada img {
+    width: 100%;
+    max-width: 180px;
+    /* Imagem maior */
+    height: 120px;
+    /* Altura definida para consistência */
+    object-fit: cover;
+    /* Garante que a imagem cubra */
+    border-radius: 6px;
+    margin-bottom: 15px;
+    filter: grayscale(0.1);
+    transition: filter 0.25s ease;
+}
+
+.card-chamada span {
+    font-size: 1.15em;
+    /* Maior */
+    font-weight: 600;
+    text-align: center;
+}
+
+.card-chamada:hover {
+    background: #b71c1c;
+    /* Fundo com cor de destaque */
+    color: #fff;
+    transform: translateY(-5px) scale(1.04);
+    /* Efeito de hover mais pronunciado */
+    box-shadow: 0 6px 20px rgba(183, 28, 28, 0.3);
+}
+
+.card-chamada:hover img {
+    filter: grayscale(0);
+}
+
+.noticias,
+.depoimentos {
+    /* Seções de notícias e depoimentos na index.html */
+    max-width: 750px;
+    margin: 0 auto 40px auto;
+    background: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px 25px;
+    /* Mais padding */
+}
+
+.noticias h3,
+.depoimentos h3 {
+    color: #fff;
+    font-size: 1.5em;
+    /* Maior */
+    margin-bottom: 20px;
+    /* Mais espaço */
+    text-align: center;
+}
+
+.noticias ul {
+    list-style: none;
+    /* Remove bullets padrão */
+    padding-left: 0;
+}
+
+.noticias li {
+    margin-bottom: 12px;
+    /* Mais espaço */
+    padding-left: 25px;
+    /* Espaço para o ícone */
+    position: relative;
+    /* Para o pseudo-elemento */
+}
+
+.noticias li::before {
+    /* Ícone personalizado para notícias */
+    content: '🎭';
+    /* Exemplo de ícone de teatro */
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #b71c1c;
+    /* Cor de destaque */
+    font-size: 1.1em;
+}
+
+.noticias a {
+    color: #b0b0b0;
+    text-decoration: none;
+    /* Remover sublinhado padrão */
+    border-bottom: 1px dotted #777;
+    /* Sublinhado pontilhado sutil */
+    transition: color 0.2s, border-bottom-color 0.2s;
+}
+
+.noticias a:hover {
+    color: #fff;
+    border-bottom-color: #fff;
+}
+
+.depoimentos-lista {
+    display: flex;
+    flex-direction: column;
+    /* Empilhar depoimentos */
+    gap: 25px;
+    /* Espaçamento aumentado */
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.depoimentos-lista blockquote {
+    background: #252525;
+    /* Fundo um pouco mais escuro */
+    color: #d1d1d1;
+    border-left: 4px solid #b71c1c;
+    /* Borda de destaque */
+    border-radius: 6px;
+    padding: 20px 25px;
+    /* Padding ajustado */
+    font-style: italic;
+    max-width: 100%;
+    /* Ocupar largura disponível */
+    margin: 0;
+    position: relative;
+    /* Para o ícone de aspas */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.depoimentos-lista blockquote::before {
+    /* Ícone de aspas */
+    content: '“';
+    font-family: Georgia, serif;
+    /* Fonte serifada para aspas */
+    font-size: 3.5em;
+    color: #b71c1c;
+    opacity: 0.3;
+    position: absolute;
+    left: 10px;
+    top: -10px;
+}
+
+.depoimentos-lista span {
+    /* Autor do depoimento */
+    display: block;
+    margin-top: 15px;
+    color: #b71c1c;
+    /* Cor de destaque */
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 600;
+    text-align: right;
+}
+
+.social-newsletter {
+    /* Seção de redes sociais e newsletter na index.html */
+    display: flex;
+    justify-content: space-around;
+    /* Melhor distribuição */
+    align-items: center;
+    gap: 30px;
+    max-width: 800px;
+    /* Largura aumentada */
+    margin: 0 auto 50px auto;
+    /* Mais margem inferior */
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+}
+
+.redes-sociais {
+    display: flex;
+    gap: 20px;
+    /* Espaçamento aumentado */
+}
+
+.redes-sociais a img {
+    width: 36px;
+    /* Ícones maiores */
+    height: 36px;
+    filter: grayscale(0.8) brightness(1);
+    /* Filtro sutil */
+    transition: filter 0.25s ease, transform 0.25s ease;
+}
+
+.redes-sociais a:hover img {
+    filter: grayscale(0) brightness(1.1);
+    transform: scale(1.15);
+    /* Efeito de hover */
+}
+
+.newsletter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    /* Espaçamento ajustado */
+    flex-wrap: wrap;
+    /* Para responsividade */
+    justify-content: center;
+}
+
+.newsletter label {
+    color: #eaeaea;
+    font-size: 1.05em;
+    margin-right: 5px;
+}
+
+.newsletter input[type="email"] {
+    padding: 10px 15px;
+    /* Padding aumentado */
+    border-radius: 25px;
+    border: 1px solid #444;
+    /* Borda mais escura */
+    outline: none;
+    font-size: 1em;
+    background: #2a2a2a;
+    color: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    min-width: 220px;
+    /* Largura mínima */
+}
+
+.newsletter input[type="email"]:focus {
+    border-color: #b71c1c;
+    box-shadow: 0 0 8px rgba(183, 28, 28, 0.4);
+}
+
+.newsletter button {
+    background: #b71c1c;
+    /* Cor de destaque */
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 22px;
+    /* Padding aumentado */
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.newsletter button:hover {
+    background: #9e1616;
+    /* Tom mais escuro */
+    transform: scale(1.05);
+}
+
+footer {
+    background: #181818;
+    color: #a0a0a0;
+    /* Cor mais suave */
+    text-align: center;
+    padding: 25px 0;
+    /* Mais padding */
+    width: 100%;
+    font-size: 0.95em;
+}
+
+footer a {
+    color: #b71c1c;
+    /* Cor de destaque */
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: #fff;
+}
+
+/* Estilos para Atores (se esta classe for usada em index.html ou outras páginas gerais) */
+.atores {
+    /* Geralmente em atores.html, mas pode ser um componente */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    /* Espaçamento aumentado */
+    padding: 20px 0;
+    /* Padding vertical */
+}
+
+.atores div.card-ator-geral {
+    /* Usar uma classe mais específica se necessário */
+    background: #fff;
+    border: 1px solid #333;
+    /* Borda mais escura */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* Sombra mais pronunciada */
+    width: 300px;
+    padding: 25px;
+    text-align: center;
+    color: #111;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.atores div.card-ator-geral:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.title-ator {
+    /* Título dentro do card de ator */
+    font-size: 1.7em;
+    /* Maior */
+    color: #111;
+    margin-top: 0;
+    margin-bottom: 18px;
+    /* Mais espaço */
+    font-weight: 600;
+}
+
+.atores img {
+    /* Imagem do ator */
+    width: 160px;
+    /* Maior */
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 18px;
+    border: 5px solid #b71c1c;
+    /* Borda com cor de destaque */
+    filter: grayscale(0.1);
+    transition: filter 0.2s ease;
+}
+
+.atores div.card-ator-geral:hover img {
+    filter: grayscale(0);
+}
+
+.descrição {
+    /* Descrição do ator */
+    font-size: 0.95em;
+    /* Ligeiramente maior */
+    color: #333;
+    text-align: justify;
+    line-height: 1.6;
+    margin-bottom: 0;
+}
+
+/* --- Media Queries para Responsividade --- */
+@media (max-width: 900px) {
+    .evento-destaque {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .chamadas-visuais {
+        gap: 20px;
+    }
+
+    .social-newsletter {
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .newsletter {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .newsletter input[type="email"] {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    nav.menu ul {
+        gap: 10px;
+    }
+
+    /* Menos gap no menu */
+    nav.menu ul li a {
+        padding: 14px 12px;
+        font-size: 1em;
+    }
+
+    header.title h1 {
+        font-size: 2em;
+    }
+
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+
+    .hero-slogan {
+        font-size: 1.2em;
+    }
+
+    .atores div.card-ator-geral {
+        width: calc(50% - 30px);
+    }
+.cartaz-principal {
+        justify-content: center;
+        /* Centraliza o texto em telas menores */
+        text-align: center;
+        padding: 0 5%;
+    }
+
+    .cartaz-principal::after {
+        /* Ajusta o gradiente para cobrir mais a tela */
+        background: linear-gradient(90deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.7) 100%);
+    }
+
+    .cartaz-conteudo {
+        max-width: 100%;
+    }
+
+    .cartaz-titulo {
+        font-size: 3rem;
+    }
+
+    .cartaz-sinopse {
+        max-width: 100%;
+        font-size: 1rem;
+    }
+
+    .cartaz-botoes {
+        justify-content: center;
+        /* Centraliza os botões */
+    }
+    .evento-botoes {
+        justify-content: center;
+        /* Centraliza os botões na seção de destaque */
+    }
+}
+
+@media (max-width: 600px) {
+    .hero-content h2 {
+        font-size: 2.2em;
+    }
+
+    .hero-slogan {
+        font-size: 1.1em;
+    }
+
+    .evento-info h3 {
+        font-size: 1.4em;
+    }
+
+    .apresentacao h3,
+    .noticias h3,
+    .depoimentos h3 {
+        font-size: 1.3em;
+    }
+
+    .card-chamada {
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .noticias,
+    .depoimentos {
+        padding: 20px 15px;
+    }
+
+    .depoimentos-lista blockquote::before {
+        font-size: 3em;
+        top: -5px;
+        left: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        line-height: 1.5;
+    }
+
+    nav.menu {
+        flex-direction: column;
+        padding: 10px 0 0 0;
+    }
+
+    nav.menu ul {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+
+    nav.menu ul li a {
+        padding: 15px 0;
+        width: 100%;
+        text-align: center;
+        border-radius: 0;
+    }
+
+    nav.menu ul li a.active::after {
+        display: none;
+    }
+
+    /* Remover ::after no mobile colapsado */
+
+    header.title h1 {
+        font-size: 1.8em;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8em;
+    }
+
+    .hero-slogan {
+        font-size: 1em;
+    }
+
+    .hero-btn {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    .evento-destaque {
+        padding: 20px 10px;
+    }
+
+    .evento-cartaz {
+        width: 150px;
+    }
+
+    .evento-info h3 {
+        font-size: 1.2em;
+    }
+
+    .atores {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .atores div.card-ator-geral {
+        width: 90%;
+        margin-bottom: 25px;
+    }
+
+    .atores div.card-ator-geral:last-child {
+        margin-bottom: 0;
+    }
+
+    .chamadas-visuais {
+        gap: 15px;
+    }
+
+    .card-chamada {
+        width: 90%;
+    }
+
+    .noticias li::before {
+        font-size: 1em;
+    }
+
+    .social-newsletter {
+        padding: 15px;
+    }
+
+    .newsletter input[type="email"] {
+        width: 100%;
+    }
+
+    .newsletter button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero-content {
+        padding: 20px 10px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.6em;
+    }
+
+    .hero-slogan {
+        font-size: 0.9em;
+    }
+
+    .hero-btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .evento-destaque {
+        padding: 15px 5px;
+        gap: 10px;
+    }
+
+    .evento-cartaz {
+        width: 120px;
+    }
+
+    .evento-info h3 {
+        font-size: 1.1em;
+    }
+
+    .apresentacao {
+        margin: 25px auto;
+        padding: 0 10px;
+    }
+
+    .apresentacao h3,
+    .noticias h3,
+    .depoimentos h3 {
+        font-size: 1.2em;
+    }
+
+    .card-chamada {
+        padding: 15px 5px;
+    }
+
+    .noticias,
+    .depoimentos {
+        padding: 15px 10px;
+    }
+
+    .depoimentos-lista {
+        gap: 15px;
+    }
+
+    .depoimentos-lista blockquote {
+        padding: 15px 20px;
+        font-size: 0.9em;
+    }
+
+    .depoimentos-lista span {
+        font-size: 0.95em;
+    }
+
+    .redes-sociais a img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .newsletter label {
+        font-size: 0.9em;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .newsletter input[type="email"] {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+
+    .newsletter button {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}
