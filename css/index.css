@@ -14,48 +14,81 @@ body {
     flex-direction: column;
     min-height: 100vh;
     overflow-x: hidden;
-    /* Garanta que o JS remova isso após as cortinas, se aplicável nesta página */
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Estilos para o conteúdo principal se as cortinas forem usadas em outras páginas */
-/* Seletor original da cortina, pode não ser usado em espetaculos.html diretamente */
 #mainSiteContent {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
     width: 100%;
     z-index: 1000;
-    /* Abaixo das cortinas, se houver */
     opacity: 1;
-    /* Assumindo que não há animação de cortina nesta página específica ou JS cuida disso */
-    /* transition: opacity 1.5s ease-in-out 1s; */
-    /* Remover se não houver cortina */
 }
 
-/* .curtain-container.open + #mainSiteContent { opacity: 1; } */
+
+/* 1. Atualize o seu header.title para ter "position: relative" */
+header.title {
+    position: relative; /* ISSO É IMPORTANTE: Segura o botão dentro do header */
+    color: #fff;
+    text-align: center;
+    padding: 25px 20px;
+    background: #1c1c1c;
+}
+
+header.title h1 {
+    font-size: 2.3em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* 2. Adicione o estilo do botão */
+.header-login-btn {
+    position: absolute; /* Flutua "solto" dentro do header */
+    right: 30px;        /* Cola no canto direito (ajuste se quiser mais p/ lado) */
+    top: 50%;           /* Tenta ficar no meio da altura */
+    transform: translateY(-50%); /* Garante o alinhamento vertical perfeito */
+    
+    color: #fff;        /* Cor do ícone */
+    font-size: 1.4rem;  /* Tamanho do ícone */
+    transition: color 0.3s, transform 0.3s;
+}
+
+/* Efeito ao passar o mouse */
+.header-login-btn:hover {
+    color: #b71c1c;     /* Fica vermelho */
+    transform: translateY(-50%) scale(1.1); /* Cresce um pouco */
+}
+
+/* 3. Ajuste para Celular (Para não ficar em cima do título) */
+@media (max-width: 480px) {
+    .header-login-btn {
+        position: static; /* Desliga o modo flutuante no celular */
+        display: block;   /* Vira um bloco comum */
+        margin-top: 10px; /* Empurra para baixo do título */
+        transform: none;  /* Remove o ajuste vertical */
+        text-align: center; /* Centraliza o ícone */
+    }
+}
 
 
 nav.menu {
     width: 100%;
     background: #181818;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-    /* Sombra um pouco mais suave */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1500;
     padding: 5px 0;
-    /* Pequeno padding vertical */
 }
 
 nav.menu ul {
     list-style: none;
     display: flex;
     gap: 25px;
-    /* Espaçamento ligeiramente ajustado */
     margin: 0;
     padding: 0;
 }
@@ -67,20 +100,16 @@ nav.menu ul li {
 nav.menu ul li a {
     display: block;
     padding: 16px 22px;
-    /* Padding ajustado */
     color: #ccc;
-    /* Cor inicial um pouco mais suave */
     font-size: 1.1em;
     font-weight: 500;
     text-decoration: none;
     letter-spacing: 0.5px;
-    /* Espaçamento entre letras sutil */
     border-radius: 4px;
     transition: background 0.25s ease, color 0.25s ease, border-bottom 0.25s ease;
     background: transparent;
     position: relative;
-    /* Para o pseudo-elemento do active */
-}
+    }
 
 nav.menu ul li a:hover {
     background: #333;
@@ -106,24 +135,6 @@ nav.menu ul li a.active::after {
     background-color: #b71c1c;
     /* Cor de destaque */
     border-radius: 2px;
-}
-
-
-header.title {
-    /* Este é o header principal do site, geralmente na index.html */
-    color: #fff;
-    text-align: center;
-    padding: 25px 20px;
-    /* Padding ajustado */
-    background: #1c1c1c;
-    /* Tom ligeiramente diferente do menu */
-}
-
-header.title h1 {
-    font-size: 2.3em;
-    /* Tamanho ajustado */
-    font-weight: 700;
-    letter-spacing: 1px;
 }
 
 /* Estilos para o novo Cartaz Principal - COM MARGENS */

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | Teatro Rebolado</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="shortcut icon" href="src/img/favicon_io/favicon-16x16.png" type="image/x-icon"/>
+  </head>
+
+  <body>
+    <header class="title">
+      <h1>Teatro Rebolado</h1>
+      <a href="index.html" class="btn-voltar-home">
+        <i class="fa-solid fa-arrow-left"></i> Voltar
+      </a>
+    </header>
+
+    <main class="login-main">
+      <section class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <img src="src/img/LogoTeatro-100.jpg" alt="Logo Teatro Rebolado">
+                <h2>Acesse sua conta</h2>
+            </div>
+
+            <form action="#" method="POST" class="login-form">
+                <div class="input-group">
+                    <label for="email">E-mail</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label for="senha">Senha</label>
+                    <div class="input-icon">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="senha" name="senha" placeholder="Sua senha secreta" required>
+                    </div>
+                </div>
+
+                <div class="actions">
+                    <a href="#" class="esqueci-senha">Esqueceu a senha?</a>
+                </div>
+
+                <button type="submit" class="btn-entrar">ENTRAR</button>
+            </form>
+
+            <div class="login-footer">
+                <p>Ainda não faz parte da companhia?</p>
+                <a href="cadastro.html" class="btn-cadastro">Crie sua conta</a>
+            </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p class="footer-text">
+        © 2023 Teatro Rebolado. Todos os direitos reservados.
+      </p>
+      <p class="footer-text">
+        Desenvolvido por <a href="index.html">Caio Mellero</a>
+      </p>
+    </footer>
+  </body>
+  <script src="js/login.js"></script>
+</html>
